@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Survey Results</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./content/form.css">
+    
+
+</head>
+<body>
+    <% include('../../components/header.ejs') %>
+    <h1>Survey Results</h1>
+    <% if (surveys.length > 0) { %>
+        <h3 style="display: inline-block;">Quiz:</h3>  
+        <table class="table">
+            <tbody>    
+                <% surveys.forEach(survey => { %>
+                    <tr>
+                        <h4 style="display: inline-block;"><%= survey.quiz %></h4>
+                        <% if (survey.questions.length > 0) { %>
+                            <% survey.questions.forEach(question => { %>
+                                <thead>
+                                    <tr>
+                                        <th>Question</th>
+                                        <th>Options</th>
+                                        <th>Response</th>
+                                    </tr>
+                                </thead>
+                                <td><%= question.question %></td>
+                                <td><%= question.options.join(', ') %></td>
+                                <td><%= question.response || 'N/A' %></td>
+                            <% }); %>
+                        <% } else { %>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        <% } %>
+                        <td>
+                            <form method="POST" action="/send-stats">
+                                <input type="hidden" name="quiz" value="<%= survey.quiz %>">
+                                <button type="submit" class="btn btn-primary">Send</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No surveys found.</p>
+    <% } %>
+</body>
+</html>

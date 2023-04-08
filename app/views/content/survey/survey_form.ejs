@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey Form 2</title>
+</head>
+<body>
+    <h1><%= quiz %></h1>
+    <form action="/submit-survey" method="POST">
+        <% questions.forEach((question, index) => { %>
+            <div>
+                <h3><%= question.question %></h3>
+                <% question.options.forEach((option, optionIndex) => { %>
+                    <div>
+                        <input type="radio" name="response-<%= index %>" value="<%= option %>" required>
+                        <label><%= option %></label>
+                    </div>
+                <% }); %>
+            </div>
+        <% }); %>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

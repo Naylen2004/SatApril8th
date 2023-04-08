@@ -32,6 +32,13 @@ import surveyRouter from '../app/routes/survey.js';
 import authRouter from '../app/routes/auth.js';
 import answersRouter from '../app/routes/surveyAnswers.js';
 import resultsRouter from '../app/routes/results.js';
+import createnewsurveyRouter from '../app/routes/createnewsurvey.js';
+import viewsurveyRouter from '../app/routes/viewsurvey.js';  
+import listsurveyRouter from '../app/routes/listsurvey.js'; 
+import searchsurveyRouter from '../app/routes/searchsurvey.js';  
+//import listsurveyRouter from '../app/routes/listsurvey.js';  
+//import viewsurveyRouter from '../app/routes/viewsurvey.js';
+
 
 //Complete DB Config
 mongoose.connect(MongoURI);
@@ -89,4 +96,10 @@ app.use('/', surveyRouter);
 app.use('/', authRouter);
 app.use('/', answersRouter);
 app.use('/', resultsRouter);
+app.use('/', createnewsurveyRouter);
+app.use('/', viewsurveyRouter);
+app.use('/viewsurvey', viewsurveyRouter);
+app.use('/searchsurvey', searchsurveyRouter);
+app.use('/listsurvey', listsurveyRouter);
+
 export default app;

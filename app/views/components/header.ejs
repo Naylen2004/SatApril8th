@@ -9,16 +9,24 @@
                 <li class="nav-item">
                     <a class="nav-link <%= (page === 'home') ? 'active' : ''%> " aria-current="page" href="/home">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link <%= (page === 'survey/add') ? 'active' : ''%> " aria-current="page" href="/survey-add">My Surveys</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <%= (page === '/results') ? 'active' : ''%> " aria-current="page" href="/results">Survey
-                        Results</a>
-                </li>
+                
+                
                 <% if(username) { %>
                     <li class="nav-item">
                         <a href="/logout" class="nav-link">Logout</a>
+                    </li>
+                    <li class="nav-item" id="create-survey-link">
+                        <a class="nav-link <%= (page === 'survey-create') ? 'active' : ''%> " aria-current="page" href="/survey-create">Create Survey</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <%= (page === 'survey/add') ? 'active' : ''%> " aria-current="page" href="/survey-add">My Surveys</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <%= (page === '/results') ? 'active' : ''%> " aria-current="page" href="/results">Survey
+                            Results</a>
+                    </li>
+                    <li class="nav-item" id="list-survey-link">
+                        <a class="nav-link <%= (page === 'survey-list') ? 'active' : ''%> " aria-current="page" href="/survey-list">List Survey</a>
                     </li>
                 <% } else { %>
                     <li class="nav-item">
